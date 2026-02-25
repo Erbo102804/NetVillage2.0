@@ -1,6 +1,7 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../../store/slices/authSlice'
+import DemoBanner from '../common/DemoBanner'
 
 const navItems = [
   { to: '/dashboard', label: 'Главная', icon: '🏠' },
@@ -21,6 +22,7 @@ export default function ClientLayout() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <DemoBanner />
       {/* Header */}
       <header className="bg-slate-800 border-b border-slate-700 sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">

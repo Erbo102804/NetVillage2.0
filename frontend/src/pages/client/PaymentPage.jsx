@@ -38,24 +38,34 @@ export default function PaymentPage() {
     load()
   }, [selectedPeriod, user?.tariff])
 
-  // WebSocket for real-time payment status
+  // WebSocket + polling + demo event listener for real-time payment status
   useEffect(() => {
     if (!currentPayment) return
 
-    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
-    const ws = new WebSocket(`${protocol}://${window.location.host}/ws/payment/${currentPayment.id}/`)
-    wsRef.current = ws
-
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data)
-      if (data.status === 'paid') {
-        dispatch(updatePaymentStatus(data))
+    // Demo mode: listen for custom event from mockApi
+    const demoHandler = (e) => {
+      if (e.detail.id === currentPayment.id) {
+        dispatch(updatePaymentStatus({ payment_id: currentPayment.id, status: 'paid' }))
         toast.success('Оплата подтверждена! Подписка продлена 🎉')
-        clearInterval(pollInterval)
       }
     }
+    window.addEventListener('demo-payment-paid', demoHandler)
 
-    // Fallback polling if WebSocket fails
+    // WebSocket (only when real backend available)
+    try {
+      const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
+      const ws = new WebSocket(`${protocol}://${window.location.host}/ws/payment/${currentPayment.id}/`)
+      wsRef.current = ws
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data)
+        if (data.status === 'paid') {
+          dispatch(updatePaymentStatus(data))
+          toast.success('Оплата подтверждена! Подписка продлена 🎉')
+        }
+      }
+    } catch {}
+
+    // Fallback polling
     const interval = setInterval(async () => {
       if (currentPayment?.status === 'pending') {
         try {
@@ -71,7 +81,8 @@ export default function PaymentPage() {
     setPollInterval(interval)
 
     return () => {
-      ws.close()
+      window.removeEventListener('demo-payment-paid', demoHandler)
+      if (wsRef.current) wsRef.current.close()
       clearInterval(interval)
     }
   }, [currentPayment?.id])
