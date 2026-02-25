@@ -204,14 +204,14 @@ KASPI_API_URL = env('KASPI_API_URL', default='https://kaspi.kz/online')
 
 # Tariff Prices (KZT per month)
 TARIFF_PRICES = {
-    'tariff-5mbps': 3000,
+    'tariff-7mbps': 3000,
     'tariff-10mbps': 4500,
     'tariff-15mbps': 6000,
     'tariff-25mbps': 8500,
 }
 
 TARIFF_SPEEDS = {
-    'tariff-5mbps': '5 Мбит/с',
+    'tariff-7mbps': '7 Мбит/с',
     'tariff-10mbps': '10 Мбит/с',
     'tariff-15mbps': '15 Мбит/с',
     'tariff-25mbps': '25 Мбит/с',

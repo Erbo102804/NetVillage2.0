@@ -14,13 +14,13 @@ from apps.accounts.models import User
 
 SAMPLE_CLIENTS = [
     {'full_name': 'Adik Seitkali', 'pppoe_login': 'adik', 'tariff': 'tariff-10mbps', 'days': 20},
-    {'full_name': 'Salim Bekov', 'pppoe_login': 'salim', 'tariff': 'tariff-5mbps', 'days': 5},
+    {'full_name': 'Salim Bekov', 'pppoe_login': 'salim', 'tariff': 'tariff-7mbps', 'days': 5},
     {'full_name': 'Huse Aliev', 'pppoe_login': 'huse', 'tariff': 'tariff-15mbps', 'days': 15},
     {'full_name': 'Arafat Nurov', 'pppoe_login': 'arafat', 'tariff': 'tariff-10mbps', 'days': 28},
     {'full_name': 'Hakim Dzhaksybekov', 'pppoe_login': 'hakim', 'tariff': 'tariff-25mbps', 'days': 12},
     {'full_name': 'Stalbek Ergashev', 'pppoe_login': 'stalbek', 'tariff': 'tariff-10mbps', 'days': 3},
     {'full_name': 'Erbol Askarov', 'pppoe_login': 'erbol', 'tariff': 'tariff-15mbps', 'days': 18},
-    {'full_name': 'Arli Bekzhanov', 'pppoe_login': 'arli', 'tariff': 'tariff-5mbps', 'days': -2},
+    {'full_name': 'Arli Bekzhanov', 'pppoe_login': 'arli', 'tariff': 'tariff-7mbps', 'days': -2},
     {'full_name': 'Muhit Suleimenov', 'pppoe_login': 'muhit', 'tariff': 'tariff-10mbps', 'days': 25},
 ]
 

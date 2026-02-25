@@ -5,7 +5,7 @@ Uses librouteros to communicate with MikroTik hEX S (RB760iGS)
 RouterOS 6.49.11 at 10.1.100.1.
 
 PPPoE secrets have a comment format: expire:YYYY-MM-DD
-Profiles: tariff-5mbps, tariff-10mbps, tariff-15mbps, tariff-25mbps
+Profiles: tariff-7mbps, tariff-10mbps, tariff-15mbps, tariff-25mbps
 """
 import logging
 from datetime import date
@@ -16,7 +16,7 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
-TARIFF_PROFILES = ['tariff-5mbps', 'tariff-10mbps', 'tariff-15mbps', 'tariff-25mbps']
+TARIFF_PROFILES = ['tariff-7mbps', 'tariff-10mbps', 'tariff-15mbps', 'tariff-25mbps']
 
 
 class MikroTikClient:
